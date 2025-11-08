@@ -1,0 +1,61 @@
+.card.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 24px */
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 640px) {
+  .card.profile-card {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.user-info {
+  display: grid;
+  gap: 1rem; /* 16px */
+}
+
+.user-info__details {
+  display: grid;
+  gap: 0.375rem; /* 6px */
+}
+
+#user-full_name {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+}
+
+#user-email {
+  font-size: 0.875rem; /* 14px */
+  color: var(--muted-foreground);
+}
+
+.user-meta {
+  font-size: 0.875rem; /* 14px */
+  color: var(--muted-foreground);
+}
+
+.personal-information {
+  display: grid;
+  gap: 1.5rem; /* 24px */
+}
+
+.personal-information-form__header {
+  display: grid;
+  gap: 0.5rem; /* 8px */
+}
+
+#personal-information-form {
+  display: grid;
+  gap: 1rem; /* 16px */
+}
+
+.personal-information-form__footer {
+  display: flex;
+  gap: 0.75rem; /* 12px */
+  justify-content: end;
+
+  margin-top: 0.5rem; /* 8px */
+}

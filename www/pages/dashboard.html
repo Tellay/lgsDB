@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/dashboard.css" />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>lgsDB</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__wrapper">
+        <div class="app-header-wrapper__logo">
+          <img src="./assets/lgsdb.svg" alt="lgsDB logo" />
+        </div>
+        <nav class="app-header__nav">
+          <a href="#" class="app-header__nav_link active">Link 1</a>
+          <a href="#" class="app-header__nav_link">Link 2</a>
+          <a href="#" class="app-header__nav_link">
+            <div class="profile">
+              <span class="user-initials"></span>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="app-wrapper">
+      <div class="app-wrapper__container">
+        <section class="card profile-card">
+          <div class="profile xl">
+            <span class="user-initials">JS</span>
+          </div>
+
+          <div class="user-info">
+            <div class="user-info__details">
+              <h1 id="user-full_name">Ford White</h1>
+              <p id="user-email">fordwhite@email.com</p>
+            </div>
+
+            <div class="user-meta">
+              <span id="user-languages"> <strong>5</strong> languages </span>
+              <span id="user-joined">
+                <strong>Joined in</strong> Oct 2025
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card personal-information">
+          <div class="personal-information-form__header">
+            <h2 class="card-title">Personal Information</h2>
+            <p class="card-description">Update your profile information</p>
+          </div>
+
+          <form id="personal-information-form">
+            <div class="form-group">
+              <label for="fullName" class="form-label">Full name</label>
+              <input
+                type="text"
+                name="full_name"
+                id="fullName"
+                placeholder="John Doe"
+                autocomplete="off"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="john.doe@example.com"
+                autocomplete="off"
+                required
+              />
+
+              <div class="personal-information-form__footer">
+                <button type="reset" class="btn-outline">Cancel</button>
+                <button type="submit" class="btn-primary">Save</button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script src="/scripts/dashboard.js"></script>
+  </body>
+</html>

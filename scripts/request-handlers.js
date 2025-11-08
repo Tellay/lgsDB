@@ -10,7 +10,15 @@ const options = require("../config/options.json");
  * @param {express.Response} res
  */
 function signup(req, res) {
-  const { full_name, email, password, password_confirmation } = req.body;
+  let { full_name, email, password, password_confirmation } = req.body;
+
+  if (typeof full_name === "string") {
+    full_name = full_name.trim().replace(/\s+/g, " "); // remove extra spaces
+  }
+
+  if (typeof email === "string") {
+    email = email.trim().replace(/\s+/g, " ").toLocaleLowerCase(); // removes spaces and standardizes the email
+  }
 
   if (!full_name || !email || !password || !password_confirmation) {
     return res.status(400).json({
@@ -235,6 +243,14 @@ module.exports.profile = profile;
  */
 function editProfile(req, res) {
   const { full_name, email } = req.body;
+
+  if (typeof full_name === "string") {
+    full_name = full_name.trim().replace(/\s+/g, " "); // remove extra spaces
+  }
+
+  if (typeof email === "string") {
+    email = email.trim().replace(/\s+/g, " ").toLocaleLowerCase(); // removes spaces and standardizes the email
+  }
 
   if (!full_name || !email) {
     return res.status(400).json({
