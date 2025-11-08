@@ -1,0 +1,57 @@
+.dashboard-container {
+  max-width: var(--container-lg);
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* 
+.card {
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card {
+  position: relative;
+  flex: 1;
+  text-align: left;
+  padding-right: 3rem;
+} */
+/* 
+.stat-card .icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--secondary);
+  padding: 0.5rem;
+  border-radius: var(--radius-lg);
+} */
+
+.polyglots ul,
+.family-card ul,
+.spoken-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.polyglots li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.3rem 0;
+}
+
+.bottom-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 1.5rem;
+}
+
+.subtitle {
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  margin-top: 0;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/auth.css" />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>lgsDB</title>
+  </head>
+  <body>
+    <div class="auth-wrapper">
+      <div class="auth-wrapper__container">
+        <div class="auth-form__header">
+          <h2 class="auth-form__header-title">Create Account</h2>
+          <p class="auth-form__header-subtitle">
+            Begin your journey into the world of languages
+          </p>
+        </div>
+
+        <div id="message-box" class="error-message"></div>
+
+        <form id="signup-form" class="auth-form">
+          <div class="form-group">
+            <label for="fullName" class="form-label">Full name</label>
+            <input
+              type="text"
+              name="full_name"
+              id="fullName"
+              placeholder="John Doe"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="john.doe@example.com"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="passwordConfirmation" class="form-label"
+              >Password confirmation</label
+            >
+            <input
+              type="password"
+              name="password_confirmation"
+              id="passwordConfirmation"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <div class="auth-form__footer">
+            <button type="submit" class="btn-primary">Signup</button>
+
+            <div class="auth-form__footer-small-text">
+              Already have an account? <a href="/login">Login</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="auth-form__disclaimer">
+        By clicking “Signup”, you agree to our Terms of Service and Privacy
+        Policy.
+      </div>
+    </div>
+
+    <script src="/scripts/auth.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "server": {
+    "port": 8081,
+    "environment": "DEVELOPMENT"
+  },
+  "session": {
+    "secret": "my_super_session_secret"
+  },
+  "auth": {
+    "min_password_length": 6,
+    "salt_rounds": 10
+  }
+}

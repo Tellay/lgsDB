@@ -1,0 +1,2 @@
+- [ ] Na página `stats` mudar o texto das iniciais no `.profile`.
+- Implementar os dados estatísticos na página `stats`.

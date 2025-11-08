@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/auth.css" />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>lgsDB</title>
+  </head>
+  <body>
+    <div class="auth-wrapper">
+      <div class="auth-wrapper__container">
+        <div class="auth-form__header">
+          <h2 class="auth-form__header-title">Welcome Back</h2>
+          <p class="auth-form__header-subtitle">
+            Enter your email and password below to login to your account
+          </p>
+        </div>
+
+        <div id="message-box" class="error-message"></div>
+
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="john.doe@example.com"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <div class="auth-form__footer">
+            <button type="submit" class="btn-primary">Login</button>
+
+            <div class="auth-form__footer-small-text">
+              Don’t have an account? <a href="/signup">Signup</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="auth-form__disclaimer">
+        By clicking “Login”, you agree to our Terms of Service and Privacy
+        Policy.
+      </div>
+    </div>
+
+    <script src="/scripts/auth.js"></script>
+  </body>
+</html>
