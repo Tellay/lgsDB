@@ -217,7 +217,18 @@ module.exports.logout = logout;
 function profile(req, res) {
   mysqlPool.query(
     mysql.format(
-      "SELECT id, full_name, email, created_at FROM user WHERE id = ?",
+      `
+        SELECT 
+        u.id, 
+        u.full_name, 
+        u.email, 
+        u.created_at,
+        COUNT(ul.language_id) as language_count
+        FROM user u
+        LEFT JOIN user_language ul ON u.id = ul.user_id
+        WHERE u.id = ?
+        GROUP BY u.id, u.full_name, u.email, u.created_at
+      `,
       [req.session.userId]
     ),
     (err, rows) => {
@@ -242,7 +253,7 @@ module.exports.profile = profile;
  * @param {express.Response} res
  */
 function editProfile(req, res) {
-  const { full_name, email } = req.body;
+  let { full_name, email } = req.body;
 
   if (typeof full_name === "string") {
     full_name = full_name.trim().replace(/\s+/g, " "); // remove extra spaces
@@ -360,6 +371,149 @@ function deleteProfile(req, res) {
   );
 }
 module.exports.deleteProfile = deleteProfile;
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function profileAccesses(req, res) {
+  const user_id = req.session.userId;
+
+  mysqlPool.query(
+    mysql.format(
+      `
+        SELECT 
+        access_ranking.rank,
+        access_ranking.access_count,
+        access_ranking.total_users
+        FROM (
+            SELECT
+            u.id,
+            COUNT(al.id) AS access_count,
+            RANK() OVER (ORDER BY COUNT(al.id) DESC) AS \`rank\`,
+            (SELECT COUNT(*) FROM user) AS total_users
+            FROM user u
+            LEFT JOIN access_log al ON u.id = al.user_id
+            GROUP BY u.id
+        ) AS access_ranking
+        WHERE access_ranking.id = ?
+      `,
+      [user_id]
+    ),
+    (err, rows) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({
+          message: "Error getting user ranking in top accesses.",
+        });
+      }
+
+      const ranking = rows[0];
+      if (!ranking) {
+        return res.status(404).json({
+          message: "Ranking not found.",
+        });
+      }
+
+      return res.json({
+        message: "Ok.",
+        data: ranking,
+      });
+    }
+  );
+}
+module.exports.profileAccesses = profileAccesses;
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function profileRanking(req, res) {
+  const user_id = req.session.userId;
+
+  mysqlPool.query(
+    mysql.format(
+      `
+        SELECT 
+        ranking.\`rank\`,
+        ranking.language_count,
+        ranking.total_users
+        FROM (
+          SELECT 
+          u.id,
+          COUNT(ul.language_id) as language_count,
+          RANK() OVER (ORDER BY COUNT(ul.language_id) DESC) as \`rank\`,
+          (SELECT COUNT(*) FROM user) as total_users
+          FROM user u
+          LEFT JOIN user_language ul ON u.id = ul.user_id
+          GROUP BY u.id
+        ) as ranking
+        WHERE ranking.id = ?
+      `,
+      [user_id]
+    ),
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({
+          message: "Error getting user ranking in top polyglots.",
+        });
+      }
+
+      const ranking = rows[0];
+      if (!ranking) {
+        return res.status(404).json({
+          message: "Ranking not found.",
+        });
+      }
+
+      return res.json({
+        message: "Ok.",
+        data: ranking,
+      });
+    }
+  );
+}
+module.exports.profileRanking = profileRanking;
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function profileLanguages(req, res) {
+  const user_id = req.session.userId;
+
+  mysqlPool.query(
+    mysql.format(
+      `
+        SELECT ul.id, l.name as language_name, f.name as fluency_name, 
+        ul.language_id, ul.fluency_id, lf.name as family_name
+        FROM user_language ul
+        INNER JOIN language l ON ul.language_id = l.id
+        INNER JOIN fluency f ON ul.fluency_id = f.id
+        LEFT JOIN language_family lf ON l.language_family_id = lf.id
+        WHERE ul.user_id = ?
+        ORDER BY l.name
+      `,
+      [user_id]
+    ),
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({
+          message: "Error getting user's languages.",
+        });
+      }
+
+      return res.json({
+        message: "Ok.",
+        data: rows,
+      });
+    }
+  );
+}
+module.exports.profileLanguages = profileLanguages;
 
 // ========================================================================= //
 

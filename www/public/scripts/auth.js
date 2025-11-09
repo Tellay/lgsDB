@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".auth-form");
-  const messageBox = document.getElementById("message-box");
+  const messageBoxEl = document.getElementById("message-box");
   const submitBtn = form.querySelector("button[type='submit']");
   const originalBtnText = submitBtn.textContent;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    messageBox.style.display = "none";
-    messageBox.textContent = "";
-    messageBox.className = "";
+    messageBoxEl.style.display = "none";
+    messageBoxEl.textContent = "";
+    messageBoxEl.className = "";
 
     const isSignup = form.id === "signup-form";
     const url = isSignup ? "/signup" : "/login";
@@ -72,9 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function showMessage(msg, type) {
-    messageBox.textContent = msg;
-    messageBox.className =
+    messageBoxEl.textContent = msg;
+    messageBoxEl.className =
       type === "error" ? "error-message" : "success-message";
-    messageBox.style.display = "block";
+    messageBoxEl.style.display = "block";
   }
 });

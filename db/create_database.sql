@@ -165,6 +165,10 @@ INSERT INTO common_phrase (phrase, translation, language_id) VALUES
     ('Danke', 'Obrigado', 8);
 
 INSERT INTO user_language (user_id, language_id, fluency_id) VALUES
-    (2, 7, 3),
-    (2, 8, 2),
-    (2, 9, 4);
+    (1, 1, 3),
+    (1, 2, 2),
+    (1, 9, 5),
+    (2, 7, 1),
+    (2, 14, 2),
+    (3, 3, 4),
+    (4, 4, 2); 

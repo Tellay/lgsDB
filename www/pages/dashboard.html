@@ -34,7 +34,7 @@
           <a href="#" class="app-header__nav_link">Link 2</a>
           <a href="#" class="app-header__nav_link">
             <div class="profile">
-              <span class="user-initials"></span>
+              <span class="user-initials">?</span>
             </div>
           </a>
         </nav>
@@ -43,63 +43,104 @@
 
     <main class="app-wrapper">
       <div class="app-wrapper__container">
-        <section class="card profile-card">
+        <section class="card profile-summary">
           <div class="profile xl">
-            <span class="user-initials">JS</span>
+            <span class="user-initials">?</span>
           </div>
 
-          <div class="user-info">
-            <div class="user-info__details">
-              <h1 id="user-full_name">Ford White</h1>
-              <p id="user-email">fordwhite@email.com</p>
+          <div class="profile-details">
+            <div class="profile-details__main">
+              <h1 id="user-full_name">Loading</h1>
+              <p id="user-email">...</p>
             </div>
 
-            <div class="user-meta">
-              <span id="user-languages"> <strong>5</strong> languages </span>
-              <span id="user-joined">
-                <strong>Joined in</strong> Oct 2025
-              </span>
+            <div class="profile-meta">
+              <span id="user-languages"><strong>...</strong> languages</span>
+              <span id="user-joined-date"><strong>Joined in</strong> ...</span>
             </div>
           </div>
         </section>
 
-        <section class="card personal-information">
-          <div class="personal-information-form__header">
-            <h2 class="card-title">Personal Information</h2>
-            <p class="card-description">Update your profile information</p>
-          </div>
-
-          <form id="personal-information-form">
-            <div class="form-group">
-              <label for="fullName" class="form-label">Full name</label>
-              <input
-                type="text"
-                name="full_name"
-                id="fullName"
-                placeholder="John Doe"
-                autocomplete="off"
-                required
-              />
+        <div class="profile-infos">
+          <section class="card profile-form">
+            <div class="profile-form__header">
+              <h2 class="card-title">Personal Information</h2>
+              <p class="card-description">Update your profile information</p>
             </div>
-
-            <div class="form-group">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="john.doe@example.com"
-                autocomplete="off"
-                required
-              />
-
-              <div class="personal-information-form__footer">
-                <button type="reset" class="btn-outline">Cancel</button>
-                <button type="submit" class="btn-primary">Save</button>
+            <div id="message-box" class="error-message"></div>
+            <form id="profile-form">
+              <div class="form-group">
+                <label for="fullName" class="form-label">Full name</label>
+                <input
+                  type="text"
+                  name="full_name"
+                  id="fullName"
+                  placeholder="John Doe"
+                  autocomplete="off"
+                  required
+                />
               </div>
-            </div>
-          </form>
-        </section>
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="john.doe@example.com"
+                  autocomplete="off"
+                  required
+                />
+                <div class="profile-form__footer">
+                  <button type="reset" class="btn-outline" id="btn-cancel">
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn-primary" id="btn-save">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <div class="profile-ranking_languages-spoken">
+            <section class="card profile-ranking">
+              <h2 class="card-title">Ranking</h2>
+
+              <div class="card-content">
+                <div class="ranking-row">
+                  <div class="card-icon lg">
+                    <img
+                      src="/assets/icons/history.svg"
+                      alt="user position in the ranking of top accesses"
+                    />
+                  </div>
+                  <div class="ranking-col">
+                    <p class="card-description">Top Accesses</p>
+                    <strong id="ranking-top-accesses-position">#...</strong>
+                  </div>
+                </div>
+
+                <div class="ranking-row">
+                  <div class="card-icon lg">
+                    <img
+                      src="/assets/icons/trending-up.svg"
+                      alt="user position in the ranking of top polyglots ranking"
+                    />
+                  </div>
+                  <div class="ranking-col">
+                    <p class="card-description">Top Polyglots</p>
+                    <strong id="ranking-top-polyglots-position">#...</strong>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card languages-spoken">
+              <h2 class="card-title">Languages Spoken</h2>
+              <p class="card-description">... languages</p>
+            </section>
+          </div>
+        </div>
       </div>
     </main>
 
