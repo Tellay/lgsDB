@@ -377,7 +377,7 @@ module.exports.deleteProfile = deleteProfile;
  * @param {express.Request} req
  * @param {express.Response} res
  */
-function profileAccesses(req, res) {
+function profileRankingAccesses(req, res) {
   const user_id = req.session.userId;
 
   mysqlPool.query(
@@ -423,14 +423,14 @@ function profileAccesses(req, res) {
     }
   );
 }
-module.exports.profileAccesses = profileAccesses;
+module.exports.profileRankingAccesses = profileRankingAccesses;
 
 /**
  *
  * @param {express.Request} req
  * @param {express.Response} res
  */
-function profileRanking(req, res) {
+function profileRankingTopPolyglots(req, res) {
   const user_id = req.session.userId;
 
   mysqlPool.query(
@@ -475,7 +475,7 @@ function profileRanking(req, res) {
     }
   );
 }
-module.exports.profileRanking = profileRanking;
+module.exports.profileRankingTopPolyglots = profileRankingTopPolyglots;
 
 /**
  *
@@ -545,6 +545,29 @@ function languages(req, res) {
   );
 }
 module.exports.languages = languages;
+
+// ========================================================================= //
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function fluencies(req, res) {
+  mysqlPool.query("SELECT * FROM fluency", (err, rows) => {
+    if (err) {
+      return res.status(500).json({
+        message: "Error getting fluencies.",
+      });
+    }
+
+    return res.json({
+      message: "Ok.",
+      data: rows,
+    });
+  });
+}
+module.exports.fluencies = fluencies;
 
 // ========================================================================= //
 

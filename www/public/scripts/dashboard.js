@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  fetch("/profile/ranking", {
+  fetch("/profile/ranking/top-polyglots", {
     method: "GET",
     credentials: "include",
   })
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
       rankingTopPolyglots.textContent = "#?";
     });
 
-  fetch("/profile/accesses", {
+  fetch("/profile/ranking/top-accesses", {
     method: "GET",
     credentials: "include",
   })
