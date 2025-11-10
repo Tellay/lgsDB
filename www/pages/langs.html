@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/langs.css" />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>lgsDB</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__wrapper">
+        <div class="app-header-wrapper__logo">
+          <a href="/">
+            <img src="./assets/lgsdb.svg" alt="lgsDB logo" />
+          </a>
+        </div>
+        <nav class="app-header__nav">
+          <a href="#" class="app-header__nav_link active">Link 1</a>
+          <a href="#" class="app-header__nav_link">Link 2</a>
+          <a href="#" class="app-header__nav_link">
+            <div class="profile">
+              <span class="user-initials">?</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="app-wrapper">
+      <div class="app-wrapper__container">
+        <section class="explore-languages__header">
+          <h1 class="explore-languages__header_title">Explore languages</h1>
+          <p class="explore-languages__header_subtitle card-description">
+            Discover and learn about languages from around the world
+          </p>
+        </section>
+
+        <section class="card languages__filter">
+          <div class="search-container">
+            <label for="language_name" class="form-label">Search</label>
+            <input
+              type="text"
+              name="language_name"
+              id="language_name"
+              placeholder="Name of the language"
+            />
+          </div>
+        </section>
+
+        <section class="languages-container">
+          <div class="languages-container__content">
+            <p class="card-description" id="languages-found">
+              ... languages found
+            </p>
+
+            <div class="languages"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/scripts/langs.js"></script>
+  </body>
+</html>

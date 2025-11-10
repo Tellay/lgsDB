@@ -207,6 +207,32 @@ function logout(req, res) {
 }
 module.exports.logout = logout;
 
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function session(req, res) {
+  if (!req.session || !req.session.userId) {
+    return res.json({
+      message: "Not authenticated.",
+      authenticated: false,
+      user: null,
+    });
+  }
+
+  res.json({
+    message: "Authenticated.",
+    authenticated: true,
+    user: {
+      id: req.session.userId,
+      name: req.session.userFullName,
+      email: req.session.userEmail,
+    },
+  });
+}
+module.exports.session = session;
+
 // ========================================================================= //
 
 /**

@@ -3,6 +3,7 @@
 
 :root {
   --background: hsl(0 0% 100%);
+  --background-opc: hsl(0 0% 100% / 95%);
   --modal-background: hsl(0 0% 0% / 70%);
   --foreground: hsl(0 0% 0%);
 
@@ -35,6 +36,8 @@
   --radius-xl: 0.875rem; /* 14px */
 
   --border-width: 0.0625rem; /* 1px */
+
+  --blur: 8px;
 
   --transition-duration: 50ms;
 }
@@ -71,7 +74,7 @@ input:disabled {
   cursor: not-allowed;
 }
 
-button {
+.btn {
   height: 2.125rem; /* 34px */
 
   display: flex;
@@ -85,32 +88,34 @@ button {
   font-weight: 500;
   border-radius: var(--radius-md);
 
+  text-decoration: none;
+
   cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
   opacity: 90%;
 }
 
-button:disabled {
+.btn:disabled {
   opacity: 70%;
   cursor: not-allowed;
 }
 
 input,
-button {
+.btn {
   transition: all var(--transition-duration);
 }
 
-button:focus,
+.btn:focus,
 select:focus {
   outline: var(--border-width) solid var(--border);
   outline-offset: var(--border-width);
 }
 
-input:active,
-button:active,
-select:active {
+input:not(:disabled):active,
+.btn:not(:disabled):active,
+select:not(:disabled):active {
   transform: scale(0.98);
 }
 
@@ -234,6 +239,7 @@ select {
 .form-label {
   font-size: 0.875rem; /* 14px */
   font-weight: 500;
+  width: fit-content;
 }
 
 .auth-form__footer {
@@ -256,6 +262,10 @@ select {
 }
 
 .app-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+
   height: 3.5rem; /* 56px */
 
   display: flex;
@@ -263,8 +273,10 @@ select {
 
   padding: 0 1.5rem; /* 24px */
 
-  background-color: var(--background);
+  background-color: var(--background-opc);
   border-bottom: var(--border-width) solid var(--border);
+
+  backdrop-filter: blur(var(--blur));
 }
 
 .app-header__wrapper {

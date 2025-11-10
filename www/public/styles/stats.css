@@ -4,7 +4,6 @@
   gap: 1rem; /* 16px */
 }
 
-/* Tablet: 2 columns */
 @media (min-width: 640px) {
   .stats {
     grid-template-columns: repeat(3, 1fr);

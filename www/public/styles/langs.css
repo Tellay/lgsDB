@@ -1,0 +1,50 @@
+.explore-languages__header {
+  display: grid;
+  gap: 0.25rem; /* 4px */
+}
+
+.explore-languages__header_title {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+}
+
+.search-container {
+  display: grid;
+  gap: 0.5rem; /* 8px */
+}
+
+.languages-container__content {
+  display: grid;
+  gap: 0.75rem; /* 12px */
+}
+
+.languages {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; /* 16px */
+}
+
+@media (min-width: 640px) {
+  .languages {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.language-card {
+  display: grid;
+  gap: 1rem; /* 16px */
+}
+
+.language-card__header {
+  display: grid;
+  gap: 0.125rem; /* 2px */
+}
+
+.language-card__footer {
+  display: flex;
+  gap: 0.75rem; /* 12px */
+}
+
+.language-card__footer a {
+  width: 100%;
+}

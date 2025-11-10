@@ -4,7 +4,6 @@
   gap: 1.5rem; /* 24px */
 }
 
-/* Tablet: 2 columns */
 @media (min-width: 640px) {
   .card.profile-summary {
     flex-direction: row;
@@ -74,7 +73,6 @@
   gap: 1.5rem; /* 24px */
 }
 
-/* Tablet: 2 columns */
 @media (min-width: 640px) {
   .profile-infos {
     grid-template-columns: repeat(3, 1fr);

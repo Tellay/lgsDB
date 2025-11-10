@@ -27,4 +27,8 @@ router.get("/dashboard", redirectIfNotAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, "../", "www", "pages", "dashboard.html"));
 });
 
+router.get("/langs", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", "www", "pages", "langs.html"));
+});
+
 module.exports = router;
