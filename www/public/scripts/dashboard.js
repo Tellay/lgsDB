@@ -413,12 +413,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================================================================== //
   // Logout and delete account (loading only on clicked button)
   // ======================================================================== //
-  function handleRedirect(response) {
-    if (response.redirected) {
-      window.location.href = response.url;
-    } else {
-      window.location.href = "/login";
-    }
+  function handleRedirect() {
+    window.location.href = "/login";
   }
 
   btnLogout.addEventListener("click", function () {
@@ -429,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetch("/logout", { method: "POST", credentials: "include" })
       .then(function (res) {
-        handleRedirect(res);
+        window.location.href = "/login";
       })
       .catch(function () {
         alert("Network error. Please try again.");
@@ -454,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetch("/profile", { method: "DELETE", credentials: "include" })
       .then(function (res) {
-        handleRedirect(res);
+        window.location.href = "/login";
       })
       .catch(function () {
         alert("Network error. Please try again.");
