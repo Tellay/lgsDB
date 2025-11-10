@@ -1,6 +1,8 @@
 var languagesContainer = document.querySelector(".languages");
 var searchInput = document.getElementById("language_name");
 var languagesFound = document.getElementById("languages-found");
+var profile = document.getElementById("profile");
+var userInitials = document.getElementById("user-initials");
 
 var isAuthenticated = false;
 var allLanguages = [];
@@ -9,11 +11,13 @@ searchInput.disabled = true;
 
 function checkAuthStatus() {
   return fetch("/session")
-    .then(function (res) {
-      return res.json();
+    .then(function (response) {
+      return response.json();
     })
-    .then(function (data) {
-      isAuthenticated = data.authenticated;
+    .then(function (result) {
+      isAuthenticated = result.authenticated;
+      profile.style.display = isAuthenticated ? "flex" : "none";
+      userInitials.textContent = getInitials(result.user.name);
     })
     .catch(function (err) {
       console.error("Error checking auth:", err);
@@ -104,3 +108,9 @@ checkAuthStatus()
   .catch(function (err) {
     console.error("Something went wrong:", err);
   });
+
+function getInitials(fullName) {
+  const parts = fullName.trim().split(/\s+/);
+  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}

@@ -3,7 +3,6 @@
 
 :root {
   --background: hsl(0 0% 100%);
-  --background-opc: hsl(0 0% 100% / 95%);
   --modal-background: hsl(0 0% 0% / 70%);
   --foreground: hsl(0 0% 0%);
 
@@ -36,8 +35,6 @@
   --radius-xl: 0.875rem; /* 14px */
 
   --border-width: 0.0625rem; /* 1px */
-
-  --blur: 8px;
 
   --transition-duration: 50ms;
 }
@@ -273,10 +270,8 @@ select {
 
   padding: 0 1.5rem; /* 24px */
 
-  background-color: var(--background-opc);
+  background-color: var(--background);
   border-bottom: var(--border-width) solid var(--border);
-
-  backdrop-filter: blur(var(--blur));
 }
 
 .app-header__wrapper {
