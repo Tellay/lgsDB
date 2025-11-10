@@ -1,7 +1,7 @@
 var languagesContainer = document.querySelector(".languages");
 var searchInput = document.getElementById("language_name");
 var languagesFound = document.getElementById("languages-found");
-var profile = document.getElementById("profile");
+var profileLink = document.getElementById("profile-link");
 var userInitials = document.getElementById("user-initials");
 
 var isAuthenticated = false;
@@ -16,8 +16,14 @@ function checkAuthStatus() {
     })
     .then(function (result) {
       isAuthenticated = result.authenticated;
-      profile.style.display = isAuthenticated ? "flex" : "none";
-      userInitials.textContent = getInitials(result.user.name);
+
+      if (isAuthenticated) {
+        profileLink.href = "/dashboard";
+        userInitials.textContent = getInitials(result.user.name);
+      } else {
+        profileLink.href = "/login";
+        userInitials.textContent = "?";
+      }
     })
     .catch(function (err) {
       console.error("Error checking auth:", err);
