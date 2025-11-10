@@ -16,7 +16,7 @@ function checkAuthStatus() {
       isAuthenticated = data.authenticated;
     })
     .catch(function (err) {
-      console.error("Erro ao verificar autenticação:", err);
+      console.error("Error checking auth:", err);
     });
 }
 
@@ -33,7 +33,7 @@ function loadLanguages() {
     })
     .catch(function (err) {
       languagesFound.textContent = "0 languages found";
-      console.error("Erro ao carregar línguas:", err);
+      console.error("Error loading languages:", err);
     });
 }
 
@@ -102,5 +102,5 @@ checkAuthStatus()
     return loadLanguages();
   })
   .catch(function (err) {
-    console.error("Erro na inicialização:", err);
+    console.error("Something went wrong:", err);
   });
