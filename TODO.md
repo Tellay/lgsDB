@@ -1,3 +1,5 @@
 - [ ] Na página `stats` mudar o texto das iniciais no `.profile`.
-- [ ] Implementar os dados estatísticos na página `stats`.
+- [x] Implementar os dados estatísticos na página `stats`.
 - [ ] Verificar se os links no header estão corretos.
+- [x] Adicionar botão para apagar o utilizador.
+- [x] Adicionar botão para dar logout.

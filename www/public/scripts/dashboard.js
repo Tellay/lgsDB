@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const cancelBtn = document.getElementById("btn-cancel");
   const originalSaveBtnText = saveBtn.textContent;
 
+  // Account buttons
+  const btnLogout = document.getElementById("btn-logout");
+  const btnDelete = document.getElementById("btn-delete-account");
+
   // Languages section
   const languagesListEl = document.getElementById("languages-list");
   const addLanguageBtn = document.getElementById("btn-add-language");
@@ -191,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================================================================== //
   // Languages
   // ======================================================================== //
-
   function loadUserLanguages() {
     fetch("/profile/languages", { credentials: "include" })
       .then(function (response) {
@@ -305,9 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================================================================== //
   // Add Language Modal
   // ======================================================================== //
-
   addLanguageBtn.addEventListener("click", function () {
-    if (addLanguageBtn.disabled) return; // Evita clique precoce
+    if (addLanguageBtn.disabled) return;
     languageModal.style.display = "flex";
     loadLanguageOptions();
     loadFluencyOptions();
@@ -407,6 +409,59 @@ document.addEventListener("DOMContentLoaded", function () {
           '<option value="">Error loading fluencies</option>';
       });
   }
+
+  // ======================================================================== //
+  // Logout and delete account (loading only on clicked button)
+  // ======================================================================== //
+  function handleRedirect(response) {
+    if (response.redirected) {
+      window.location.href = response.url;
+    } else {
+      window.location.href = "/login";
+    }
+  }
+
+  btnLogout.addEventListener("click", function () {
+    if (btnLogout.disabled) return;
+
+    btnLogout.disabled = true;
+    btnLogout.textContent = "Logging out...";
+
+    fetch("/logout", { method: "POST", credentials: "include" })
+      .then(function (res) {
+        handleRedirect(res);
+      })
+      .catch(function () {
+        alert("Network error. Please try again.");
+        btnLogout.disabled = false;
+        btnLogout.textContent = "Logout";
+      });
+  });
+
+  btnDelete.addEventListener("click", function () {
+    if (btnDelete.disabled) return;
+
+    if (
+      !confirm(
+        "Are you sure you want to delete your account? This action cannot be undone."
+      )
+    ) {
+      return;
+    }
+
+    btnDelete.disabled = true;
+    btnDelete.textContent = "Deleting...";
+
+    fetch("/profile", { method: "DELETE", credentials: "include" })
+      .then(function (res) {
+        handleRedirect(res);
+      })
+      .catch(function () {
+        alert("Network error. Please try again.");
+        btnDelete.disabled = false;
+        btnDelete.textContent = "Delete Account";
+      });
+  });
 
   // ======================================================================== //
   // Helpers

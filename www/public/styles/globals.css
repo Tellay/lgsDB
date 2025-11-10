@@ -148,8 +148,17 @@ select {
   color: var(--muted-foreground);
 }
 
+.btn-ghost {
+  color: var(--secondary-foreground);
+}
+
 .btn-ghost:hover {
   background-color: var(--secondary);
+}
+
+.btn-destructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
 }
 
 .btn-sm {

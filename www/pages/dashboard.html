@@ -64,45 +64,63 @@
         </section>
 
         <div class="profile-infos">
-          <section class="card profile-form">
-            <div class="profile-form__header">
-              <h2 class="card-title">Personal Information</h2>
-              <p class="card-description">Update your profile information</p>
-            </div>
-            <div id="message-box" class="error-message"></div>
-            <form id="profile-form">
-              <div class="form-group">
-                <label for="fullName" class="form-label">Full name</label>
-                <input
-                  type="text"
-                  name="full_name"
-                  id="fullName"
-                  placeholder="John Doe"
-                  autocomplete="off"
-                  required
-                />
+          <div class="profile-infos_account-actions">
+            <section class="card profile-form">
+              <div class="profile-form__header">
+                <h2 class="card-title">Personal Information</h2>
+                <p class="card-description">Update your profile information</p>
               </div>
-              <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="john.doe@example.com"
-                  autocomplete="off"
-                  required
-                />
-                <div class="profile-form__footer">
-                  <button type="reset" class="btn btn-outline" id="btn-cancel">
-                    Cancel
-                  </button>
-                  <button type="submit" class="btn btn-primary" id="btn-save">
-                    Save
-                  </button>
+              <div id="message-box" class="error-message"></div>
+              <form id="profile-form">
+                <div class="form-group">
+                  <label for="fullName" class="form-label">Full name</label>
+                  <input
+                    type="text"
+                    name="full_name"
+                    id="fullName"
+                    placeholder="John Doe"
+                    autocomplete="off"
+                    required
+                  />
                 </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="john.doe@example.com"
+                    autocomplete="off"
+                    required
+                  />
+                  <div class="profile-form__footer">
+                    <button
+                      type="reset"
+                      class="btn btn-outline"
+                      id="btn-cancel"
+                    >
+                      Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="btn-save">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </section>
+
+            <div class="card account-actions">
+              <h2 class="card-title">Account Actions</h2>
+
+              <div class="account-actions__content">
+                <button class="btn btn-outline" id="btn-logout">Logout</button>
+
+                <button class="btn btn-destructive" id="btn-delete-account">
+                  Delete Account
+                </button>
               </div>
-            </form>
-          </section>
+            </div>
+          </div>
 
           <div class="profile-ranking_languages-spoken">
             <section class="card profile-ranking">
