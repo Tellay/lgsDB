@@ -186,9 +186,6 @@
   text-align: center;
 }
 
-/* APGAR DEPOIS */
-
-/* Modal base */
 .modal {
   display: none;
   position: fixed;
@@ -216,7 +213,6 @@
   font-size: 1.125rem; /* 18px */
 }
 
-/* Modal content box */
 .modal-content {
   position: relative;
 
