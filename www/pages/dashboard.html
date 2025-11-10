@@ -55,7 +55,9 @@
             </div>
 
             <div class="profile-meta">
-              <span id="user-languages"><strong>...</strong> languages</span>
+              <span class="languages-count"
+                ><strong>...</strong> languages</span
+              >
               <span id="user-joined-date"><strong>Joined in</strong> ...</span>
             </div>
           </div>
@@ -136,8 +138,63 @@
             </section>
 
             <section class="card languages-spoken">
-              <h2 class="card-title">Languages Spoken</h2>
-              <p class="card-description">... languages</p>
+              <div class="languages-spoken__header-container">
+                <div class="languages-spoken__header">
+                  <h2 class="card-title">Languages Spoken</h2>
+                  <p class="card-description languages-count">... languages</p>
+                </div>
+
+                <button class="btn btn-secondary btn-sm" id="btn-add-language">
+                  <img src="/assets/icons/plus.svg" alt="Add language" />
+                  Add
+                </button>
+              </div>
+
+              <div class="languages-spoken__list" id="languages-list">
+                <!-- languages load via JS -->
+              </div>
+
+              <div id="language-modal" class="modal">
+                <div class="modal-content">
+                  <div class="modal-content__header">
+                    <h2 class="modal-content__header-title">Add a Language</h2>
+                    <p class="card-description">
+                      Add a new language to your profile
+                    </p>
+                  </div>
+
+                  <form id="language-form">
+                    <div class="form-group">
+                      <label for="language-name" class="form-label"
+                        >Language</label
+                      >
+                      <select id="language-name" name="language_id" required>
+                        <option value="">Select language</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="language-fluency" class="form-label"
+                        >Fluency</label
+                      >
+                      <select id="language-fluency" name="fluency_id" required>
+                        <option value="">Select fluency</option>
+                      </select>
+                    </div>
+
+                    <div class="modal-content__footer">
+                      <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="btn-close-modal"
+                      >
+                        Cancel
+                      </button>
+                      <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </section>
           </div>
         </div>

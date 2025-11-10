@@ -502,7 +502,7 @@ function profileLanguages(req, res) {
     (err, rows) => {
       if (err) {
         return res.status(500).json({
-          message: "Error getting user's languages.",
+          message: "Error getting user languages.",
         });
       }
 
@@ -514,6 +514,86 @@ function profileLanguages(req, res) {
   );
 }
 module.exports.profileLanguages = profileLanguages;
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function profileAddLanguage(req, res) {
+  const { language_id, fluency_id } = req.body;
+
+  if (!language_id || !fluency_id) {
+    return res.status(400).json({
+      message:
+        "Missing fields. The required fields are language_id and fluency_id.",
+    });
+  }
+
+  const user_id = req.session.userId;
+  mysqlPool.execute(
+    mysql.format(
+      "INSERT INTO user_language (user_id, language_id, fluency_id) VALUES (?, ?, ?)",
+      [user_id, language_id, fluency_id]
+    ),
+    (err, rows) => {
+      if (err) {
+        if (err.code === "ER_DUP_ENTRY") {
+          return res.status(409).json({
+            message: "Language is already in the user profile.",
+          });
+        }
+
+        return res.status(500).json({
+          message: "Error inserting user language.",
+        });
+      }
+
+      return res.json({
+        message: "Language added successfully!",
+        user_language_id: rows.insertId,
+      });
+    }
+  );
+}
+module.exports.profileAddLanguage = profileAddLanguage;
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function profileDeleteLanguage(req, res) {
+  const { id: user_language_id } = req.params;
+
+  const user_id = req.session.userId;
+
+  mysqlPool.query(
+    mysql.format(`DELETE FROM user_language WHERE id = ? AND user_id = ?`, [
+      user_language_id,
+      user_id,
+    ]),
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({
+          message: "Error deleting user languages.",
+        });
+      }
+
+      const success = rows.affectedRows > 0;
+      if (!success) {
+        return res.status(404).json({
+          message: "Language not found in user profile.",
+        });
+      }
+
+      res.json({
+        message: "Language deleted successfully!",
+      });
+    }
+  );
+}
+module.exports.profileDeleteLanguage = profileDeleteLanguage;
 
 // ========================================================================= //
 
@@ -587,7 +667,7 @@ function dashboardSummary(req, res) {
     (err, rows) => {
       if (err) {
         return res.status(500).json({
-          message: "Error fetching dashboard summary.",
+          message: "Error getting dashboard summary.",
         });
       }
 

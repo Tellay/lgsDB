@@ -17,5 +17,11 @@ router.get(
   handler.profileRankingAccesses
 );
 router.get("/profile/languages", requireAuth, handler.profileLanguages);
+router.post("/profile/languages", requireAuth, handler.profileAddLanguage);
+router.delete(
+  "/profile/languages/:id",
+  requireAuth,
+  handler.profileDeleteLanguage
+);
 
 module.exports = router;
