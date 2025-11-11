@@ -1,13 +1,8 @@
 "use strict";
 
 const mysql = require("mysql2");
+const options = require("./options.json");
 
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "lgsdb",
-});
+const pool = mysql.createPool(options.database);
 
 module.exports = pool;

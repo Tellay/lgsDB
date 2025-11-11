@@ -77,53 +77,102 @@ CREATE TABLE fact (
 );
 
 INSERT INTO fluency (name) VALUES 
-    ('Native'),
-    ('Fluent'),
-    ('Advanced'),
-    ('Intermediate'),
-    ('Basic');
+('Native'),
+('Fluent'),
+('Advanced'),
+('Intermediate'),
+('Basic');
 
 INSERT INTO language_family (name) VALUES 
-    ('Indo-European'),
-    ('Sino-Tibetan'),
-    ('Afro-Asiatic'),
-    ('Austronesian'),
-    ('Niger-Congo'),
-    ('Dravidian'),
-    ('Turkic'),
-    ('Japonic'),
-    ('Koreanic'),
-    ('Uralic');
+('Indo-European'),
+('Sino-Tibetan'),
+('Afro-Asiatic'),
+('Austronesian'),
+('Niger-Congo'),
+('Dravidian'),
+('Turkic'),
+('Japonic'),
+('Koreanic'),
+('Uralic');
 
 INSERT INTO language (name, description, language_family_id, num_speakers) VALUES 
-    ('Portuguese', 'Official language of Portugal, Brazil, and other Lusophone countries. Spoken by over 250 million people.', 1, 250000000),
-    ('English', 'West Germanic language, one of the most spoken worldwide. Serves as an international lingua franca.', 1, 1500000000),
-    ('Spanish', 'Romance language mainly spoken in Spain and Latin America. Second most spoken native language.', 1, 480000000),
-    ('French', 'Romance language official in France and many francophone countries. Official in 29 countries.', 1, 300000000),
-    ('Mandarin', 'Sino-Tibetan language spoken in China. The most spoken native language in the world.', 2, 920000000),
-    ('Arabic', 'Semitic language spoken across the Middle East and North Africa. Liturgical language of Islam.', 3, 430000000),
-    ('Japanese', 'Official language of Japan. Uses three writing systems: hiragana, katakana, and kanji.', 8, 125000000),
-    ('German', 'West Germanic language spoken mainly in Germany, Austria, and Switzerland.', 1, 135000000),
-    ('Russian', 'East Slavic language, official in Russia. Uses the Cyrillic alphabet.', 1, 258000000),
-    ('Italian', 'Romance language mainly spoken in Italy. Known for its musicality.', 1, 85000000),
-    ('Korean', 'Official language of both South and North Korea. Uses the Hangul alphabet.', 9, 77000000),
-    ('Hindi', 'Official language of India. One of the most spoken languages in the world.', 1, 600000000),
-    ('Turkish', 'Official language of Turkey. Belongs to the Turkic language family.', 7, 88000000),
-    ('Dutch', 'West Germanic language spoken in the Netherlands and Belgium (Flemish).', 1, 24000000),
-    ('Swedish', 'North Germanic language mainly spoken in Sweden.', 1, 10000000);
+('Portuguese', 'Official language of Portugal, Brazil, and other Lusophone countries. Spoken by over 250 million people.', 1, 250000000),
+('English', 'West Germanic language, one of the most spoken worldwide. Serves as an international lingua franca.', 1, 1500000000),
+('Spanish', 'Romance language mainly spoken in Spain and Latin America. Second most spoken native language.', 1, 480000000),
+('French', 'Romance language official in France and many francophone countries. Official in 29 countries.', 1, 300000000),
+('Mandarin', 'Sino-Tibetan language spoken in China. The most spoken native language in the world.', 2, 920000000),
+('Arabic', 'Semitic language spoken across the Middle East and North Africa. Liturgical language of Islam.', 3, 430000000),
+('Japanese', 'Official language of Japan. Uses three writing systems: hiragana, katakana, and kanji.', 8, 125000000),
+('German', 'West Germanic language spoken mainly in Germany, Austria, and Switzerland.', 1, 135000000),
+('Russian', 'East Slavic language, official in Russia. Uses the Cyrillic alphabet.', 1, 258000000),
+('Italian', 'Romance language mainly spoken in Italy. Known for its musicality.', 1, 85000000),
+('Korean', 'Official language of both South and North Korea. Uses the Hangul alphabet.', 9, 77000000),
+('Hindi', 'Official language of India. One of the most spoken languages in the world.', 1, 600000000),
+('Turkish', 'Official language of Turkey. Belongs to the Turkic language family.', 7, 88000000),
+('Dutch', 'West Germanic language spoken in the Netherlands and Belgium (Flemish).', 1, 24000000),
+('Swedish', 'North Germanic language mainly spoken in Sweden.', 1, 10000000);
 
 INSERT INTO user (full_name, email, password) VALUES 
-    ('John Smith', 'john.smith@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
-    ('Mary Johnson', 'mary.johnson@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
-    ('Peter Brown', 'peter.brown@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
-    ('Anna White', 'anna.white@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
-    ('Charles Green', 'charles.green@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136');
+('John Smith', 'john.smith@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
+('Mary Johnson', 'mary.johnson@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
+('Peter Brown', 'peter.brown@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
+('Anna White', 'anna.white@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
+('Charles Green', 'charles.green@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
+('Laura Adams', 'laura.adams@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
+('Michael Davis', 'michael.davis@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
+('Emily Clark', 'emily.clark@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136');
 
 INSERT INTO user_language (user_id, language_id, fluency_id) VALUES
-    (1, 1, 3),
-    (1, 2, 2),
-    (1, 9, 5),
-    (2, 7, 1),
-    (2, 14, 2),
-    (3, 3, 4),
-    (4, 4, 2); 
+-- John Smith: 3 langs
+(1, 2, 1),
+(1, 3, 3),
+(1, 5, 4),
+
+-- Mary Johnson: 4 langs
+(2, 1, 2),
+(2, 2, 3),
+(2, 4, 3),
+(2, 6, 2),
+
+-- Peter Brown: 2 langs
+(3, 3, 1),
+(3, 2, 2),
+
+-- Anna White: 5 langs
+(4, 7, 1),
+(4, 2, 2),
+(4, 5, 3),
+(4, 8, 4),
+(4, 1, 5),
+
+-- Charles Green: 1 lang
+(5, 12, 1),
+
+-- Laura Adams: 3 langs
+(6, 1, 3),
+(6, 9, 2),
+(6, 4, 1),
+
+-- Michael Davis: 2 langs
+(7, 11, 2),
+(7, 2, 1),
+
+-- Emily Clark: 3 langs
+(8, 2, 1),
+(8, 10, 2),
+(8, 3, 3);
+
+INSERT INTO access_log (user_id, access_time) VALUES
+(1, NOW() - INTERVAL 1 DAY),
+(1, NOW() - INTERVAL 3 DAY),
+(2, NOW() - INTERVAL 2 HOUR),
+(3, NOW() - INTERVAL 5 DAY),
+(3, NOW() - INTERVAL 1 HOUR),
+(4, NOW() - INTERVAL 1 DAY),
+(4, NOW() - INTERVAL 4 DAY),
+(5, NOW() - INTERVAL 2 DAY),
+(6, NOW() - INTERVAL 3 HOUR),
+(6, NOW() - INTERVAL 7 DAY),
+(7, NOW() - INTERVAL 5 HOUR),
+(8, NOW() - INTERVAL 1 DAY),
+(8, NOW() - INTERVAL 2 DAY);

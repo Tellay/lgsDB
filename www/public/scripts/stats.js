@@ -166,8 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
         response.json().then((result) => ({ response, result }))
       )
       .then(({ response, result }) => {
-        console.log(response, result);
-
         if (!response.ok || !result.data)
           throw new Error("Invalid profile response");
         const initials = getInitials(result.data.full_name);

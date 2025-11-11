@@ -3,6 +3,13 @@
     "port": 8081,
     "environment": "DEVELOPMENT"
   },
+  "database": {
+    "connectionLimit": 10,
+    "host": "localhost",
+    "user": "root",
+    "password": "root",
+    "database": "lgsdb"
+  },
   "session": {
     "secret": "my_super_session_secret"
   },
