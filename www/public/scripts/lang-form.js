@@ -184,3 +184,32 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(() => (window.location.href = "/langs"));
   }
 });
+
+// === Fetch: User Profile ===
+function loadUserProfile() {
+  const initialsEls = document.getElementById("user-initials");
+  fetch("/profile", { credentials: "include" })
+    .then((response) =>
+      response.json().then((result) => ({ response, result }))
+    )
+    .then(({ response, result }) => {
+      if (!response.ok || !result.data)
+        throw new Error("Invalid profile response");
+      const initials = getInitials(result.data.full_name);
+      initialsEls.textContent = initials;
+    })
+    .catch((err) => {
+      console.error("Failed to load user profile:", err);
+      initialsEls.textContent = "?";
+    });
+}
+
+// === Helper: Get Initials ===
+function getInitials(fullName) {
+  const parts = fullName.trim().split(/\s+/);
+  return parts.length === 1
+    ? parts[0].substring(0, 2).toUpperCase()
+    : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+loadUserProfile();
