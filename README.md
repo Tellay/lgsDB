@@ -92,9 +92,10 @@ The project also relies on the following Node.js packages:
 ### Endpoints:
 
 - **Authentication:**
-  - `POST /auth/register`: Register a new user.
-  - `POST /auth/login`: Login an existing user.
-  - `GET /auth/logout`: Logout the current user.
+  - `POST /signup`: Register a new user.
+  - `POST /login`: Login an existing user.
+  - `POST /logout`: Logout the current user.
+  - `POST /session`: Get the current session if exists.
 - **Languages:**
   - `GET /languages`: Get all languages.
   - `GET /languages/:id`: Get a specific language by ID.
@@ -103,15 +104,23 @@ The project also relies on the following Node.js packages:
   - `DELETE /languages/:id`: Delete a language. Requires authentication.
 - **Families:**
   - `GET /families`: Get all language families.
-  - `GET /families/:id`: Get a specific language family by ID.
 - **Fluencies:**
   - `GET /fluencies`: Get all fluencies.
-  - `GET /fluencies/:id`: Get a specific fluency by ID.
 - **Profile:**
   - `GET /profile`: Get the current user's profile. Requires authentication.
   - `PUT /profile`: Update the current user's profile. Requires authentication.
+  - `DELETE /profile`: Delete the current user's profile. Requires authentication.
+  - `GET /profile/ranking/top-polyglots`: Get the current user's ranking in top polyglots.
+  - `GET /profile/ranking/top-accesses`: Get the current user's ranking in top accesses.
+  - `GET /profile/languages`: Get the current user's languages. Requires authentication.
+  - `POST /profile/languages`: Create a language to current user. Requires authentication.
+  - `DELETE /profile/languages`: Delete a language to current user. Requires authentication.
 - **Stats:**
-  - `GET /stats`: Get statistical information. Requires authentication.
+  - `GET /dashboard-summary`: Get the dashboard summary.
+  - `GET /top-polyglots`: Get the top polyglots.
+  - `GET /top-language-families`: Get the top language families.
+  - `GET /top-languages`: Get the top languages.
+  - `GET /top-users-access`: Get the top users accesses.
 
 ### Example (Get all languages):
 
