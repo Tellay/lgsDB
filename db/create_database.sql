@@ -38,6 +38,7 @@ CREATE TABLE language (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     description TEXT,
+    num_speakers BIGINT,
     language_family_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (language_family_id) REFERENCES language_family(id)
@@ -75,31 +76,6 @@ CREATE TABLE fact (
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE famous_person (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL
-);
-
-CREATE TABLE common_phrase (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    phrase VARCHAR(255) NOT NULL,
-    translation VARCHAR(255),
-    language_id INT NOT NULL,
-    FOREIGN KEY (language_id) REFERENCES language(id)
-        ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE TABLE famous_person_language (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    famous_person_id INT NOT NULL,
-    language_id INT NOT NULL,
-    FOREIGN KEY (famous_person_id) REFERENCES famous_person(id)
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (language_id) REFERENCES language(id)
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    UNIQUE KEY unique_famous_person_language (famous_person_id, language_id)
-);
-
 INSERT INTO fluency (name) VALUES 
     ('Native'),
     ('Fluent'),
@@ -119,22 +95,22 @@ INSERT INTO language_family (name) VALUES
     ('Koreanic'),
     ('Uralic');
 
-INSERT INTO language (name, description, language_family_id) VALUES 
-    ('Portuguese', 'Official language of Portugal, Brazil, and other Lusophone countries. Spoken by over 250 million people.', 1),
-    ('English', 'West Germanic language, one of the most spoken worldwide. Serves as an international lingua franca.', 1),
-    ('Spanish', 'Romance language mainly spoken in Spain and Latin America. Second most spoken native language.', 1),
-    ('French', 'Romance language official in France and many francophone countries. Official in 29 countries.', 1),
-    ('Mandarin', 'Sino-Tibetan language spoken in China. The most spoken native language in the world.', 2),
-    ('Arabic', 'Semitic language spoken across the Middle East and North Africa. Liturgical language of Islam.', 3),
-    ('Japanese', 'Official language of Japan. Uses three writing systems: hiragana, katakana, and kanji.', 8),
-    ('German', 'West Germanic language spoken mainly in Germany, Austria, and Switzerland.', 1),
-    ('Russian', 'East Slavic language, official in Russia. Uses the Cyrillic alphabet.', 1),
-    ('Italian', 'Romance language mainly spoken in Italy. Known for its musicality.', 1),
-    ('Korean', 'Official language of both South and North Korea. Uses the Hangul alphabet.', 9),
-    ('Hindi', 'Official language of India. One of the most spoken languages in the world.', 1),
-    ('Turkish', 'Official language of Turkey. Belongs to the Turkic language family.', 7),
-    ('Dutch', 'West Germanic language spoken in the Netherlands and Belgium (Flemish).', 1),
-    ('Swedish', 'North Germanic language mainly spoken in Sweden.', 1);
+INSERT INTO language (name, description, language_family_id, num_speakers) VALUES 
+    ('Portuguese', 'Official language of Portugal, Brazil, and other Lusophone countries. Spoken by over 250 million people.', 1, 250000000),
+    ('English', 'West Germanic language, one of the most spoken worldwide. Serves as an international lingua franca.', 1, 1500000000),
+    ('Spanish', 'Romance language mainly spoken in Spain and Latin America. Second most spoken native language.', 1, 480000000),
+    ('French', 'Romance language official in France and many francophone countries. Official in 29 countries.', 1, 300000000),
+    ('Mandarin', 'Sino-Tibetan language spoken in China. The most spoken native language in the world.', 2, 920000000),
+    ('Arabic', 'Semitic language spoken across the Middle East and North Africa. Liturgical language of Islam.', 3, 430000000),
+    ('Japanese', 'Official language of Japan. Uses three writing systems: hiragana, katakana, and kanji.', 8, 125000000),
+    ('German', 'West Germanic language spoken mainly in Germany, Austria, and Switzerland.', 1, 135000000),
+    ('Russian', 'East Slavic language, official in Russia. Uses the Cyrillic alphabet.', 1, 258000000),
+    ('Italian', 'Romance language mainly spoken in Italy. Known for its musicality.', 1, 85000000),
+    ('Korean', 'Official language of both South and North Korea. Uses the Hangul alphabet.', 9, 77000000),
+    ('Hindi', 'Official language of India. One of the most spoken languages in the world.', 1, 600000000),
+    ('Turkish', 'Official language of Turkey. Belongs to the Turkic language family.', 7, 88000000),
+    ('Dutch', 'West Germanic language spoken in the Netherlands and Belgium (Flemish).', 1, 24000000),
+    ('Swedish', 'North Germanic language mainly spoken in Sweden.', 1, 10000000);
 
 INSERT INTO user (full_name, email, password) VALUES 
     ('John Smith', 'john.smith@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
@@ -142,27 +118,6 @@ INSERT INTO user (full_name, email, password) VALUES
     ('Peter Brown', 'peter.brown@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
     ('Anna White', 'anna.white@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
     ('Charles Green', 'charles.green@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136');
-
-INSERT INTO common_phrase (phrase, translation, language_id) VALUES 
-    ('Bom dia', 'Good morning', 1),
-    ('Como estás?', 'How are you?', 1),
-    ('De nada', 'You are welcome', 1),
-
-    ('Good morning', 'Bom dia', 2),
-    ('How are you?', 'Como estás?', 2),
-    ('You are welcome', 'De nada', 2),
-
-    ('Buenos días', 'Bom dia', 3),
-    ('¿Cómo estás?', 'Como estás?', 3),
-    ('Gracias', 'Obrigado', 3),
-
-    ('Bonjour', 'Bom dia', 4),
-    ('Comment allez-vous?', 'Como estás?', 4),
-    ('Merci', 'Obrigado', 4),
-
-    ('Guten Morgen', 'Bom dia', 8),
-    ('Wie geht es dir?', 'Como estás?', 8),
-    ('Danke', 'Obrigado', 8);
 
 INSERT INTO user_language (user_id, language_id, fluency_id) VALUES
     (1, 1, 3),

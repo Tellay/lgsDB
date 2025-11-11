@@ -8,7 +8,7 @@ const {
 
 // if the user is already logged in, redirect to /dashboard, otherwise redirect to /login
 router.get("/", redirectIfAuthenticated, (req, res) => {
-  res.redirect("/login");
+  res.sendFile(path.join(__dirname, "../", "www", "pages", "index.html"));
 });
 
 router.get("/login", redirectIfAuthenticated, (req, res) => {

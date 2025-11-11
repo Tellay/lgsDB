@@ -3,3 +3,4 @@
 - [ ] Verificar se os links no header estão corretos.
 - [x] Adicionar botão para apagar o utilizador.
 - [x] Adicionar botão para dar logout.
+- [ ] Adicionar quantidade de falantes a cada língua.

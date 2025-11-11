@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   setFormDisabled(true);
-  addLanguageBtn.disabled = true; // 🔒 Desativa até as línguas carregarem
+  addLanguageBtn.disabled = true;
 
   // ======================================================================== //
   // Profile loading
