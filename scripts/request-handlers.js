@@ -652,6 +652,51 @@ function languages(req, res) {
 }
 module.exports.languages = languages;
 
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function language(req, res) {
+  const { id } = req.params;
+
+  if (!id) {
+    return res.status(400).json({
+      message: "Missing fields. The required field is id.",
+    });
+  }
+
+  mysqlPool.query(
+    mysql.format(
+      `
+        SELECT 
+        l.*,
+        lf.name AS family_name,
+        JSON_ARRAYAGG(w.name) AS words
+        FROM language l
+        LEFT JOIN language_family lf ON l.language_family_id = lf.id
+        LEFT JOIN word w ON w.language_id = l.id
+        WHERE l.id = ?
+        GROUP BY l.id;
+      `,
+      [id]
+    ),
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({
+          message: "Error getting language.",
+        });
+      }
+
+      return res.json({
+        message: "Ok.",
+        data: rows[0],
+      });
+    }
+  );
+}
+module.exports.language = language;
+
 // ========================================================================= //
 
 /**

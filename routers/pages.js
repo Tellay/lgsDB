@@ -31,4 +31,8 @@ router.get("/langs", (req, res) => {
   res.sendFile(path.join(__dirname, "../", "www", "pages", "langs.html"));
 });
 
+router.get("/langs/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", "www", "pages", "lang.html"));
+});
+
 module.exports = router;

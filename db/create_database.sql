@@ -95,22 +95,36 @@ INSERT INTO language_family (name) VALUES
 ('Koreanic'),
 ('Uralic');
 
-INSERT INTO language (name, description, language_family_id, num_speakers) VALUES 
-('Portuguese', 'Official language of Portugal, Brazil, and other Lusophone countries. Spoken by over 250 million people.', 1, 250000000),
-('English', 'West Germanic language, one of the most spoken worldwide. Serves as an international lingua franca.', 1, 1500000000),
-('Spanish', 'Romance language mainly spoken in Spain and Latin America. Second most spoken native language.', 1, 480000000),
-('French', 'Romance language official in France and many francophone countries. Official in 29 countries.', 1, 300000000),
-('Mandarin', 'Sino-Tibetan language spoken in China. The most spoken native language in the world.', 2, 920000000),
-('Arabic', 'Semitic language spoken across the Middle East and North Africa. Liturgical language of Islam.', 3, 430000000),
-('Japanese', 'Official language of Japan. Uses three writing systems: hiragana, katakana, and kanji.', 8, 125000000),
-('German', 'West Germanic language spoken mainly in Germany, Austria, and Switzerland.', 1, 135000000),
-('Russian', 'East Slavic language, official in Russia. Uses the Cyrillic alphabet.', 1, 258000000),
-('Italian', 'Romance language mainly spoken in Italy. Known for its musicality.', 1, 85000000),
-('Korean', 'Official language of both South and North Korea. Uses the Hangul alphabet.', 9, 77000000),
-('Hindi', 'Official language of India. One of the most spoken languages in the world.', 1, 600000000),
-('Turkish', 'Official language of Turkey. Belongs to the Turkic language family.', 7, 88000000),
-('Dutch', 'West Germanic language spoken in the Netherlands and Belgium (Flemish).', 1, 24000000),
-('Swedish', 'North Germanic language mainly spoken in Sweden.', 1, 10000000);
+INSERT INTO language (name, description, language_family_id, num_speakers) VALUES
+('Portuguese', 'Portuguese evolved from Latin in the Iberian Peninsula, sharing roots with Galician. Influenced by Arabic during Moorish rule and shaped by maritime exploration, it spread to Africa, Asia, and South America. Regional varieties like Brazilian and European Portuguese emerged, enriched by African and indigenous vocabularies. With deep poetic and musical traditions, Portuguese embodies a blend of European, African, and American influences that continue to define its cultural identity.', 1, 250000000),
+
+('English', 'English developed from the fusion of Anglo-Saxon, Norse, and Norman French, evolving through centuries of migration, conquest, and cultural exchange. Its expansion across the world came with British trade, science, and empire. Borrowing heavily from Latin and Greek, English adapted to diverse cultures, becoming the primary global medium of communication, technology, and literature.', 1, 1500000000),
+
+('Spanish', 'Spanish emerged from Vulgar Latin in the Iberian Peninsula, shaped by Celtic, Basque, and Arabic influences during centuries of cultural coexistence. The language expanded globally through colonization, blending with indigenous and African languages in the Americas. Dialects such as Castilian and Latin American Spanish reflect its varied history and evolving identity as one of the most spoken and dynamic global languages.', 1, 480000000),
+
+('French', 'French originated from the Latin of Roman Gaul, mixed with Celtic and Frankish elements. It evolved through Old and Middle French, becoming refined under royal courts and later spreading through colonization. The language influenced diplomacy, art, and philosophy worldwide, shaping cultures from Africa to the Caribbean while preserving its distinct elegance and expressive depth.', 1, 300000000),
+
+('Mandarin', 'Mandarin, part of the Sino-Tibetan family, developed from northern Chinese dialects shaped by centuries of imperial unification. Influenced by Mongolic, Manchu, and regional languages, it became China’s official tongue. Mandarin expanded through education and migration, serving as a key symbol of cultural unity and global influence in technology, literature, and philosophy.', 2, 920000000),
+
+('Arabic', 'Arabic arose from Semitic roots in the Arabian Peninsula, developing diverse dialects alongside Classical Arabic. It spread rapidly with Islam, influencing languages from Persian to Swahili. The language absorbed Greek, Aramaic, and Turkish terms, preserving centuries of poetry, science, and philosophy. Today, its regional forms reflect a vast cultural mosaic from North Africa to the Middle East.', 3, 430000000),
+
+('Japanese', 'Japanese evolved from ancient Japonic dialects, influenced by Chinese writing and vocabulary, as well as Korean linguistic contact. Over time, it formed its unique writing systems—kanji, hiragana, and katakana. Isolation and later modernization shaped modern Japanese, blending native and foreign elements into a complex yet harmonious language central to Japan’s culture and identity.', 8, 125000000),
+
+('German', 'German developed from early West Germanic dialects, influenced by Latin, Norse, and Slavic neighbors. It evolved into distinct regional forms before standardizing around High German. German shaped European science, philosophy, and literature, while absorbing terms through centuries of trade and cultural exchange, maintaining its precision and expressive richness.', 1, 135000000),
+
+('Russian', 'Russian, an East Slavic language, originated from Old Church Slavonic and regional dialects of Kievan Rus. It evolved through Mongol rule, Westernization, and Soviet influence. The Cyrillic script unified diverse peoples across vast territories. Russian remains central to Slavic culture, literature, and science, reflecting centuries of cultural adaptation and resilience.', 1, 258000000),
+
+('Italian', 'Italian evolved from Latin spoken in the Italian Peninsula, shaped by Etruscan, Greek, and Germanic influences. Regional dialects flourished, later unified by the Tuscan variety of Dante and Renaissance writers. Its melodic rhythm and artistic vocabulary made it the language of music, art, and design, preserving a rich heritage of cultural refinement.', 1, 85000000),
+
+('Korean', 'Korean’s origins connect to the Koreanic family, influenced by Chinese vocabulary and possibly ancient Altaic contacts. The creation of Hangul in the 15th century revolutionized literacy, replacing classical Chinese writing. Through historical division and modernization, Korean evolved into two standardized forms, maintaining deep cultural symbolism and a strong sense of national unity.', 9, 77000000),
+
+('Hindi', 'Hindi evolved from Sanskrit through Prakrit and Apabhraṃśa stages, absorbing Persian, Arabic, and Turkic influences during Mughal rule. Modern Hindi, written in Devanagari, coexists with Urdu as part of Hindustani. Its literature, cinema, and diverse dialects express India’s vast cultural and linguistic heritage, linking ancient traditions with modern identity.', 1, 600000000),
+
+('Turkish', 'Turkish originated from Central Asian Turkic languages, evolving under Persian and Arabic influence during the Seljuk and Ottoman eras. After language reforms, it adopted Latin script and modernized vocabulary. Turkish bridges Asia and Europe, reflecting centuries of migration, empire, and reform that shaped its unique structure and expressive style.', 7, 88000000),
+
+('Dutch', 'Dutch arose from Old Low Franconian, merging Germanic and Romance elements through centuries of trade and colonization. It influenced Afrikaans and Caribbean creoles, while borrowing from French and English. Its pragmatic structure and maritime history reflect a culture of commerce, innovation, and global interaction.', 1, 24000000),
+
+('Swedish', 'Swedish developed from Old Norse, influenced by Low German through trade and by French during modernization. It evolved into a standardized national language blending Scandinavian roots with continental vocabulary. Swedish culture and literature reflect its balance between tradition, innovation, and social equality.', 1, 10000000);
 
 INSERT INTO user (full_name, email, password) VALUES 
 ('John Smith', 'john.smith@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136'),
@@ -123,41 +137,26 @@ INSERT INTO user (full_name, email, password) VALUES
 ('Emily Clark', 'emily.clark@example.com', '$2b$10$w7j572ZEilefc2KGc/mbB.YTWOTjOS3wnuoAPpHLWPzJ268MgH136');
 
 INSERT INTO user_language (user_id, language_id, fluency_id) VALUES
--- John Smith: 3 langs
 (1, 2, 1),
 (1, 3, 3),
 (1, 5, 4),
-
--- Mary Johnson: 4 langs
 (2, 1, 2),
 (2, 2, 3),
 (2, 4, 3),
 (2, 6, 2),
-
--- Peter Brown: 2 langs
 (3, 3, 1),
 (3, 2, 2),
-
--- Anna White: 5 langs
 (4, 7, 1),
 (4, 2, 2),
 (4, 5, 3),
 (4, 8, 4),
 (4, 1, 5),
-
--- Charles Green: 1 lang
 (5, 12, 1),
-
--- Laura Adams: 3 langs
 (6, 1, 3),
 (6, 9, 2),
 (6, 4, 1),
-
--- Michael Davis: 2 langs
 (7, 11, 2),
 (7, 2, 1),
-
--- Emily Clark: 3 langs
 (8, 2, 1),
 (8, 10, 2),
 (8, 3, 3);
@@ -176,3 +175,21 @@ INSERT INTO access_log (user_id, access_time) VALUES
 (7, NOW() - INTERVAL 5 HOUR),
 (8, NOW() - INTERVAL 1 DAY),
 (8, NOW() - INTERVAL 2 DAY);
+
+-- Words
+INSERT INTO word (name, language_id) VALUES
+('Olá', 1), ('Obrigado', 1), ('Amor', 1), ('Casa', 1),
+('Hello', 2), ('Thank you', 2), ('Love', 2), ('House', 2),
+('Hola', 3), ('Gracias', 3), ('Amor', 3), ('Casa', 3),
+('Bonjour', 4), ('Merci', 4), ('Amour', 4), ('Maison', 4),
+('你好', 5), ('谢谢', 5), ('爱', 5), ('家', 5),
+('مرحبا', 6), ('شكرا', 6), ('حب', 6), ('بيت', 6),
+('こんにちは', 7), ('ありがとう', 7), ('愛', 7), ('家', 7),
+('Hallo', 8), ('Danke', 8), ('Liebe', 8), ('Haus', 8),
+('Привет', 9), ('Спасибо', 9), ('Любовь', 9), ('Дом', 9),
+('Ciao', 10), ('Grazie', 10), ('Amore', 10), ('Casa', 10),
+('안녕하세요', 11), ('감사합니다', 11), ('사랑', 11), ('집', 11),
+('नमस्ते', 12), ('धन्यवाद', 12), ('प्यार', 12), ('घर', 12),
+('Merhaba', 13), ('Teşekkürler', 13), ('Aşk', 13), ('Ev', 13),
+('Hallo', 14), ('Dank je', 14), ('Liefde', 14), ('Huis', 14),
+('Hej', 15), ('Tack', 15), ('Kärlek', 15), ('Hus', 15);

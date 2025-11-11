@@ -1,6 +1,7 @@
-- [ ] Na página `stats` mudar o texto das iniciais no `.profile`.
+- [x] Na página `stats` mudar o texto das iniciais no `.profile`.
 - [x] Implementar os dados estatísticos na página `stats`.
-- [ ] Verificar se os links no header estão corretos.
+- [x] Verificar se os links no header estão corretos.
 - [x] Adicionar botão para apagar o utilizador.
 - [x] Adicionar botão para dar logout.
-- [ ] Adicionar quantidade de falantes a cada língua.
+- [x] Adicionar quantidade de falantes a cada língua.
+- [ ] Pensar se deixo os fatos, se sim acabalos também na página lang.html

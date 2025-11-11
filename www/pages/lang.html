@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/lang.css" />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>lgsDB</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__wrapper">
+        <a href="/dashboard" class="app-header-wrapper__logo">
+          <img src="/assets/lgsdb.svg" alt="lgsDB logo" />
+        </a>
+        <nav class="app-header__nav">
+          <a href="/langs" class="app-header__nav_link active">Languages</a>
+          <a href="/stats" class="app-header__nav_link">Stats</a>
+          <a class="app-header__nav_link" id="profile-link">
+            <div class="profile" id="profile">
+              <span id="user-initials">?</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="app-wrapper">
+      <div class="app-wrapper__container">
+        <a href="/langs" class="btn btn-ghost btn-back">
+          <img src="/assets/icons/back.svg" alt="back icon" />
+          Back to Explore
+        </a>
+
+        <div id="language-content">
+          <div class="card">
+            <div class="lang-header">
+              <div class="lang-details">
+                <h1 id="lang-name">...</h1>
+                <div class="sub" id="lang-family"></div>
+              </div>
+              <div class="lang-speakers__container">
+                <img src="/assets/icons/users2.svg" alt="users icon" />
+                <div class="sub" id="lang-speakers"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-title card-title">
+              <img src="/assets/icons/info.svg" alt="info icon" />
+              Origin and History
+            </div>
+            <p id="lang-description">...</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="section-title card-title">
+                Most Frequently Used Words
+              </div>
+
+              <p class="card-description">
+                Words that are used the most everyday
+              </p>
+            </div>
+            <div class="words" id="lang-words"></div>
+          </div>
+
+          <div class="card">
+            <div class="section-title card-title">
+              <img src="/assets/icons/star.svg" alt="star icon" /> Interesting
+              Facts
+            </div>
+            <div class="facts">
+              <ul id="lang-facts"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="loading" class="loading" style="display: none">
+      Loading language data...
+    </div>
+    <div id="error" class="error" style="display: none"></div>
+
+    <script src="/scripts/lang.js"></script>
+  </body>
+</html>
