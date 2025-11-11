@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/lang-form.css" />
+
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/assets/lgsdb_icon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>lgsDB</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__wrapper">
+        <a href="/dashboard" class="app-header-wrapper__logo">
+          <img src="/assets/lgsdb.svg" alt="lgsDB logo" />
+        </a>
+        <nav class="app-header__nav">
+          <a href="/langs" class="app-header__nav_link active">Languages</a>
+          <a href="/stats" class="app-header__nav_link">Stats</a>
+          <a class="app-header__nav_link" id="profile-link">
+            <div class="profile" id="profile">
+              <span id="user-initials">?</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="app-wrapper">
+      <div class="app-wrapper__container">
+        <div class="card language-form__container">
+          <h2 id="language-form__title" class="card-title">Add a Language</h2>
+
+          <div
+            id="message-box"
+            class="error-message"
+            style="display: none"
+          ></div>
+
+          <form id="language-form">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Language name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="speakers" class="form-label">Speakers</label>
+              <input
+                type="number"
+                id="speakers"
+                name="speakers"
+                placeholder="Number of speakers"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="family-id" class="form-label">Language Family</label>
+
+              <select name="language_family_id" id="family-id"></select>
+            </div>
+
+            <div class="form-group">
+              <label for="origin-history" class="form-label"
+                >Origin and History</label
+              >
+              <textarea
+                id="origin-history"
+                name="origin_history"
+                placeholder="Language origin and history"
+                rows="5"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="words" class="form-label"
+                >Most Frequently Used Words</label
+              >
+              <textarea
+                id="words"
+                name="words"
+                placeholder="Words separated by a comma"
+                rows="5"
+              ></textarea>
+            </div>
+
+            <div class="language-form__foter">
+              <button type="reset" class="btn btn-outline">Cancel</button>
+              <button type="button" class="btn btn-destructive" id="btn-delete">
+                Delete
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="/scripts/lang-form.js"></script>
+  </body>
+</html>

@@ -5,6 +5,7 @@ const PORT = options.server.port || 8081;
 const path = require("path");
 const authRouter = require("./routers/auth");
 const languagesRouter = require("./routers/languages");
+const languageFamilies = require("./routers/families");
 const fluenciesRouter = require("./routers/fluencies");
 const profileRouter = require("./routers/profile");
 const statsRouter = require("./routers/stats");
@@ -31,6 +32,7 @@ app.use(
 
 app.use("/", authRouter);
 app.use("/", languagesRouter);
+app.use("/", languageFamilies);
 app.use("/", fluenciesRouter);
 app.use("/", profileRouter);
 app.use("/", statsRouter);

@@ -72,6 +72,18 @@ input {
   border-radius: var(--radius-md);
 }
 
+textarea {
+  height: fit-content;
+  padding: 0.875rem 0.75rem; /* 14px 12px */
+
+  background-color: var(--background);
+
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+
+  resize: vertical;
+}
+
 input:disabled {
   opacity: 70%;
   cursor: not-allowed;

@@ -4,4 +4,5 @@
 - [x] Adicionar botão para apagar o utilizador.
 - [x] Adicionar botão para dar logout.
 - [x] Adicionar quantidade de falantes a cada língua.
-- [ ] Pensar se deixo os fatos, se sim acabalos também na página lang.html
+- [x] Pensar se deixo os fatos, se sim acabalos também na página lang.html
+- [x] Adicionar botão de criar e apagar língua.

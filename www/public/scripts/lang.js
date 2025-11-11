@@ -1,3 +1,7 @@
+var languageContent = document.getElementById("language-content");
+var loadingEl = document.getElementById("loading");
+var errorEl = document.getElementById("error");
+
 function getLanguageIdFromURL() {
   const path = window.location.pathname.split("/");
   return path[path.length - 1];
@@ -17,47 +21,44 @@ function renderLanguage(data) {
 
   const wordsContainer = document.getElementById("lang-words");
   wordsContainer.innerHTML = "";
+
   data.words.forEach((word) => {
     const span = document.createElement("span");
     span.className = "word";
     span.textContent = word;
     wordsContainer.appendChild(span);
   });
-
-  const facts = [
-    "English has over 170,000 words in active use",
-    "It is the official language of 67 countries",
-    "Shakespeare added around 1,700 words to English",
-    "The longest word has 45 letters: pneumonoultramicroscopicsilicovolcanoconiosis",
-    "English is the most studied second language worldwide",
-  ];
-
-  const factsContainer = document.getElementById("lang-facts");
-  factsContainer.innerHTML = "";
-  facts.forEach((fact) => {
-    const li = document.createElement("li");
-    li.textContent = fact;
-    factsContainer.appendChild(li);
-  });
 }
 
 function showError(message) {
-  const errorEl = document.getElementById("error");
-  errorEl.textContent = `Error: ${message}`;
+  languageContent.innerHTML = "";
+
+  errorEl.textContent = message;
   errorEl.style.display = "block";
 }
 
 function loadLanguage() {
   const id = getLanguageIdFromURL();
 
+  loadingEl.style.display = "block";
+  errorEl.style.display = "none";
+  languageContent.style.display = "flex";
+
   fetch(`/languages/${id}`)
     .then((res) => res.json())
     .then((result) => {
-      if (!result.data) throw new Error("Invalid response from server");
+      loadingEl.style.display = "none";
+
+      if (!result || !result.data) {
+        return showError("Language not found.");
+      }
+
       renderLanguage(result.data);
     })
     .catch((err) => {
-      showError(err.message);
+      loadingEl.style.display = "none";
+      showError("Failed to load language data.");
+      console.error(err);
     });
 }
 

@@ -697,7 +697,246 @@ function language(req, res) {
 }
 module.exports.language = language;
 
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function addLanguage(req, res) {
+  let { name, description, language_family_id, num_speakers, words } = req.body;
+
+  if (typeof name === "string") {
+    name = name.trim().replace(/\s+/g, " ");
+  }
+
+  if (typeof description === "string") {
+    description = description.trim().replace(/\s+/g, " ");
+  }
+
+  const parsed_num_speakers = Number(num_speakers);
+  if (isNaN(parsed_num_speakers)) {
+    return res.status(400).json({
+      message: "Invalid num_speakers format.",
+    });
+  }
+
+  if (!name || !description || !language_family_id || !num_speakers) {
+    return res.status(400).json({
+      message:
+        "Missing fields. The required fields are name, description, language_family_id and num_speakers.",
+    });
+  }
+
+  let wordList = [];
+  if (Array.isArray(words)) {
+    wordList = words.map((w) => String(w).trim()).filter((w) => w.length > 0);
+  } else if (typeof words === "string" && words.trim() !== "") {
+    wordList = words
+      .split(",")
+      .map((w) => w.trim())
+      .filter((w) => w.length > 0);
+  }
+
+  mysqlPool.query(
+    mysql.format(
+      "INSERT INTO language (name, description, language_family_id, num_speakers) VALUES (?, ?, ?, ?)",
+      [name, description, language_family_id, parsed_num_speakers]
+    ),
+    (err, rows) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({
+          message: "Error inserting language.",
+        });
+      }
+
+      const language_id = rows.insertId;
+
+      if (wordList.length === 0) {
+        return res.status(201).json({
+          message: "Language added successfully!",
+          lang_id: language_id,
+        });
+      }
+
+      const values = wordList.map((word) => [word, language_id]);
+
+      mysqlPool.query(
+        mysql.format("INSERT INTO word (name, language_id) VALUES ?", [values]),
+        (err) => {
+          if (err) {
+            return res.status(500).json({
+              message: "Error inserting words.",
+            });
+          }
+
+          return res.status(201).json({
+            message: "Language added successfully!",
+            lang_id: language_id,
+            words: wordList,
+          });
+        }
+      );
+    }
+  );
+}
+module.exports.addLanguage = addLanguage;
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function editLanguage(req, res) {
+  const { id } = req.params;
+  let { name, description, language_family_id, num_speakers, words } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "Language ID is required." });
+  }
+
+  if (typeof name === "string") {
+    name = name.trim().replace(/\s+/g, " ");
+  }
+
+  if (typeof description === "string") {
+    description = description.trim().replace(/\s+/g, " ");
+  }
+
+  const parsed_num_speakers = Number(num_speakers);
+  if (isNaN(parsed_num_speakers)) {
+    return res.status(400).json({ message: "Invalid num_speakers format." });
+  }
+
+  const updateQuery = mysql.format(
+    "UPDATE language SET name = ?, description = ?, language_family_id = ?, num_speakers = ? WHERE id = ?",
+    [name, description, language_family_id, parsed_num_speakers, id]
+  );
+
+  mysqlPool.query(updateQuery, (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Error updating language." });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Language not found." });
+    }
+
+    let wordList = [];
+    if (Array.isArray(words)) {
+      wordList = words.map((w) => String(w).trim()).filter((w) => w.length > 0);
+    } else if (typeof words === "string" && words.trim() !== "") {
+      wordList = words
+        .split(",")
+        .map((w) => w.trim())
+        .filter((w) => w.length > 0);
+    }
+
+    if (wordList.length === 0) {
+      return res
+        .status(200)
+        .json({ message: "Language updated successfully (no words)." });
+    }
+
+    // delete old words
+    const deleteWords = mysql.format("DELETE FROM word WHERE language_id = ?", [
+      id,
+    ]);
+    mysqlPool.query(deleteWords, (err) => {
+      if (err) {
+        return res.status(500).json({ message: "Error removing old words." });
+      }
+
+      // insert new words
+      const values = wordList.map((word) => [word, id]);
+      mysqlPool.query(
+        mysql.format("INSERT INTO word (name, language_id) VALUES ?", [values]),
+        (err) => {
+          if (err) {
+            return res
+              .status(500)
+              .json({ message: "Error inserting new words." });
+          }
+
+          return res.status(200).json({
+            message: "Language and words updated successfully.",
+            id: id,
+            words: wordList,
+          });
+        }
+      );
+    });
+  });
+}
+module.exports.editLanguage = editLanguage;
+
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function deleteLanguage(req, res) {
+  const { id } = req.params;
+
+  if (!id) {
+    return res
+      .status(400)
+      .json({ message: "Missing parameters. The required parameter is id." });
+  }
+
+  mysqlPool.query(
+    mysql.format("DELETE FROM word WHERE language_id = ?", [id]),
+    (err) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ message: "Error deleting associated words." });
+      }
+
+      mysqlPool.query(
+        mysql.format("DELETE FROM language WHERE id = ?", [id]),
+        (err, result) => {
+          if (err) {
+            return res
+              .status(500)
+              .json({ message: "Error deleting language." });
+          }
+
+          if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Language not found." });
+          }
+
+          return res.json({ message: "Language deleted successfully." });
+        }
+      );
+    }
+  );
+}
+module.exports.deleteLanguage = deleteLanguage;
+
 // ========================================================================= //
+
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+function languageFamilies(req, res) {
+  const query = "SELECT id, name FROM language_family ORDER BY name ASC";
+
+  mysqlPool.query(query, (err, rows) => {
+    if (err) {
+      return res.status(500).json({
+        message: "Error getting language families.",
+      });
+    }
+
+    res.json({ message: "Ok.", data: rows });
+  });
+}
+
+// ========================================================================= //
+
+module.exports.languageFamilies = languageFamilies;
 
 /**
  *

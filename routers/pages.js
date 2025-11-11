@@ -31,6 +31,14 @@ router.get("/langs", (req, res) => {
   res.sendFile(path.join(__dirname, "../", "www", "pages", "langs.html"));
 });
 
+router.get("/langs/add", redirectIfNotAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../", "www", "pages", "lang-form.html"));
+});
+
+router.get("/langs/edit/:id", redirectIfNotAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../", "www", "pages", "lang-form.html"));
+});
+
 router.get("/langs/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "../", "www", "pages", "lang.html"));
 });

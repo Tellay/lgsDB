@@ -68,14 +68,6 @@ CREATE TABLE word (
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE fact (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name TEXT NOT NULL,
-    language_id INT NOT NULL,
-    FOREIGN KEY (language_id) REFERENCES language(id)
-        ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 INSERT INTO fluency (name) VALUES 
 ('Native'),
 ('Fluent'),
